@@ -4,9 +4,7 @@ RUN apk upgrade --update \
     && apk --update add --no-cache --virtual .phpize-deps $PHPIZE_DEPS imagemagick-dev libtool \
     && pecl install imagick \
     && docker-php-ext-configure exif \
-    && docker-php-ext-install -j$(nproc) mysqli \
-    && docker-php-ext-install -j$(nproc) exif \
-    && docker-php-ext-install -j$(nproc) pdo pdo_mysql \
+    && docker-php-ext-install -j$(nproc) mysqli exif pdo pdo_mysql \
     && docker-php-ext-enable imagick \
     && docker-php-ext-enable exif \
     && apk add --no-cache --virtual .imagick-runtime-deps imagemagick \
